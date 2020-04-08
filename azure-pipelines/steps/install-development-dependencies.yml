@@ -12,5 +12,6 @@ steps:
       python -m pipenv lock --dev -r --pre > dev-requirements.txt
       pip install -r dev-requirements.txt
       pip install pytest-azurepipelines
+      pip install pyinstaller
       pip list
     displayName: 'Install development dependencies'
