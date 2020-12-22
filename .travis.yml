@@ -163,6 +163,17 @@ matrix:
         - ccache -s
 
     - <<: *mbed-tools-test
+      name: "Test custom target"
+      env: NAME=test-import-cmd CACHE_NAME=test-import-cmd
+      script:
+        - mbedtools new custom-target-test
+        - cd custom-target-test
+        - cp $TRAVIS_BUILD_DIR/travis-ci/test-data/custom_targets.json .
+        - mkdir TARGET_IMAGINARYBOARD && cp mbed-os/targets/TARGET_STM/TARGET_STM32L4/TARGET_STM32L475xG/TARGET_DISCO_L475VG_IOT01A/* TARGET_IMAGINARYBOARD
+        - mbedtools compile -t GCC_ARM -m IMAGINARYBOARD
+        - ccache -s
+
+    - <<: *mbed-tools-test
       name: "Test deploy command checks out tip of default branch"
       env: NAME=test-deploy-cmd CACHE_NAME=test-deploy-cmd
       script:
