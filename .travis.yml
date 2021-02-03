@@ -169,7 +169,7 @@ matrix:
         - mbedtools new custom-target-test
         - cd custom-target-test
         - cp $TRAVIS_BUILD_DIR/travis-ci/test-data/custom_targets.json .
-        - mkdir TARGET_IMAGINARYBOARD && cp mbed-os/targets/TARGET_STM/TARGET_STM32L4/TARGET_STM32L475xG/TARGET_DISCO_L475VG_IOT01A/* TARGET_IMAGINARYBOARD
+        - mkdir TARGET_IMAGINARYBOARD && cp $TRAVIS_BUILD_DIR/travis-ci/test-data/TARGET_IMAGINARYBOARD/* TARGET_IMAGINARYBOARD
         - mbedtools compile -t GCC_ARM -m IMAGINARYBOARD
         - ccache -s
 
